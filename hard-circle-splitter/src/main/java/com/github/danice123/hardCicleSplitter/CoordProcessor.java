@@ -33,6 +33,12 @@ public class CoordProcessor {
 	}
 	
 	private boolean isSubsetValid(Subset subset) {
+		if (subset.getCenterOfSubset().x + subset.getRadius() > 1 ||
+			subset.getCenterOfSubset().x - subset.getRadius() < 0  ||
+			subset.getCenterOfSubset().y + subset.getRadius() > 1  ||
+			subset.getCenterOfSubset().y - subset.getRadius() < 0 ) {
+			return false;
+		}
 		for (Coord coord : coords) {
 			if (!subset.getSubsets().contains(coord) && subset.isPointInSubsetCircle(coord)) {
 				return false;
